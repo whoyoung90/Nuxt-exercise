@@ -1,3 +1,9 @@
 <template>
-  <h1>메인페이지</h1>
+  <div>
+    <p>메인 페이지입니다</p>
+  </div>
 </template>
+
+<script>
+export default {}
+</script>
