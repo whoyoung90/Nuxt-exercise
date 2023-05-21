@@ -1,4 +1,4 @@
-# Nuxt-exercise
+# learn-nuxt
 
 ## Build Setup
 
