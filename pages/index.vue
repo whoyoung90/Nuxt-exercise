@@ -5,7 +5,12 @@
         <input type="text" />
       </div>
       <ul>
-        <li v-for="product in products" :key="product.id" class="item flex">
+        <li
+          v-for="product in products"
+          :key="product.id"
+          class="item flex"
+          @click="moveToDetailPage(product.id)"
+        >
           <img
             class="product-image"
             :src="product.imageUrl"
@@ -42,6 +47,12 @@ export default {
       imageUrl: `${item.imageUrl}?random=${Math.random()}`,
     }))
     return { products } // 리턴값이 '뷰 인스턴스 데이터'와 동일하게 동작
+  },
+
+  methods: {
+    moveToDetailPage(id) {
+      this.$router.push(`detail/${id}`)
+    },
   },
 
   // data() {
