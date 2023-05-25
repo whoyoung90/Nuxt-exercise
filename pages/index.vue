@@ -46,12 +46,12 @@ export default {
       ...item,
       imageUrl: `${item.imageUrl}?random=${Math.random()}`,
     }))
-    return { products } // 리턴값이 '뷰 인스턴스 데이터'와 동일하게 동작
+    return { products } // 리턴값이 뷰 data 속성과 동일하게 동작
   },
 
   methods: {
     moveToDetailPage(id) {
-      this.$router.push(`detail/${id}`)
+      this.$router.push(`/detail/${id}`)
     },
   },
 
