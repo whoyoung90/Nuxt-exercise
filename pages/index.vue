@@ -1,9 +1,7 @@
 <template>
   <div class="app">
     <main>
-      <div>
-        <input type="text" />
-      </div>
+      <SearchInput></SearchInput>
       <ul>
         <li
           v-for="product in products"
@@ -26,9 +24,12 @@
 
 <script>
 import axios from 'axios'
+import SearchInput from '@/components/SearchInput.vue'
 
 export default {
   name: 'IndexPage',
+  components: { SearchInput },
+
   /**
    * @decription asyncData
    * "페이지가 그려지기 전에" 호출되는 속성
