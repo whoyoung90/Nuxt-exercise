@@ -1,7 +1,12 @@
 <template>
   <div class="app">
     <main>
-      <SearchInput></SearchInput>
+      <!-- 하위 컴포넌트에서 올려보낸 @input -->
+      <SearchInput
+        :search-keyword="searchKeyword"
+        @input="updateSearchKeyword"
+      ></SearchInput>
+      <!-- <SearchInput v-model="searchKeyword"></SearchInput> -->
       <ul>
         <li
           v-for="product in products"
@@ -29,7 +34,6 @@ import SearchInput from '@/components/SearchInput.vue'
 export default {
   name: 'IndexPage',
   components: { SearchInput },
-
   /**
    * @decription asyncData
    * "페이지가 그려지기 전에" 호출되는 속성
@@ -50,7 +54,20 @@ export default {
     return { products } // 리턴값이 뷰 data 속성과 동일하게 동작
   },
 
+  data() {
+    return {
+      searchKeyword: '',
+    }
+  },
+
   methods: {
+    /**
+     * @description updateSearchKeyword
+     * @parameter 하위 컴포넌트의 $event.target.value
+     */
+    updateSearchKeyword(keyword) {
+      this.searchKeyword = keyword
+    },
     moveToDetailPage(id) {
       this.$router.push(`/detail/${id}`)
     },
