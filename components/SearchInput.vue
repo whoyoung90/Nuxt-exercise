@@ -1,13 +1,13 @@
 <template>
   <div>
     <!-- :value와 @input을 합치면 v-model -->
-    <!-- 하위 컴포넌트에서 올려보내는 이벤트('input')와 페이로드($event.target.value) -->
+    <!-- 하위 컴포넌트에서 올려보내는 이벤트('inputEvent')와 페이로드($event.target.value) -->
     <input
       type="text"
       :value="searchKeyword"
-      @input="$emit('input', $event.target.value)"
+      @input="$emit('inputEvent', $event.target.value)"
     />
-    <button>search</button>
+    <button type="button" @click="$emit('searchEvent')">search</button>
   </div>
 </template>
 

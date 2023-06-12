@@ -1,11 +1,16 @@
 <template>
   <div class="app">
     <main>
-      <!-- 하위 컴포넌트에서 올려보낸 @input -->
+      <!-- 하위 컴포넌트에서 올려보낸 @inputEvent -->
       <SearchInput
         :search-keyword="searchKeyword"
-        @input="updateSearchKeyword"
+        @inputEvent="updateSearchKeyword"
+        @searchEvent="searchProducts"
       ></SearchInput>
+      <!-- <SearchInput
+        :search-keyword="searchKeyword"
+        @inputEvent="searchKeyword = $event"
+      ></SearchInput> -->
       <!-- <SearchInput v-model="searchKeyword"></SearchInput> -->
       <ul>
         <li
@@ -30,6 +35,7 @@
 <script>
 import axios from 'axios'
 import SearchInput from '@/components/SearchInput.vue'
+import { fetchProductsByKeyword } from '@/api'
 
 export default {
   name: 'IndexPage',
@@ -67,6 +73,10 @@ export default {
      */
     updateSearchKeyword(keyword) {
       this.searchKeyword = keyword
+    },
+    async searchProducts() {
+      const response = await fetchProductsByKeyword(this.searchKeyword)
+      console.log(response)
     },
     moveToDetailPage(id) {
       this.$router.push(`/detail/${id}`)
