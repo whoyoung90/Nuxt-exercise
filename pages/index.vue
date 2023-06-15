@@ -57,7 +57,7 @@ export default {
       ...item,
       imageUrl: `${item.imageUrl}?random=${Math.random()}`,
     }))
-    return { products } // 리턴값이 뷰 data 속성과 동일하게 동작
+    return { products } // ✅ asyncData 리턴값이 뷰 data() 속성으로 설정된다!
   },
 
   data() {
@@ -76,7 +76,12 @@ export default {
     },
     async searchProducts() {
       const response = await fetchProductsByKeyword(this.searchKeyword)
-      console.log(response)
+
+      // ✅
+      this.products = response.data.map((item) => ({
+        ...item,
+        imageUrl: `${item.imageUrl}?random=${Math.random()}`,
+      }))
     },
     moveToDetailPage(id) {
       this.$router.push(`/detail/${id}`)
