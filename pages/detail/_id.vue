@@ -11,7 +11,7 @@
       <div class="side-panel">
         <p class="name">{{ product.name }}</p>
         <p class="price">{{ product.price }}</p>
-        <!-- <button type="button" @click="addToCart">Add to Cart</button> -->
+        <button type="button" @click="addToCart">Add to Cart</button>
       </div>
     </div>
   </div>
@@ -33,6 +33,11 @@ export default {
   // created() {
   //   fetchProductById(this.$route.params.id)
   // },
+  methods: {
+    addToCart() {
+      this.$router.push('/cart')
+    },
+  },
 }
 </script>
 
