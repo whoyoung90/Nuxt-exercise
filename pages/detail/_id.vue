@@ -27,7 +27,7 @@ export default {
   async asyncData({ params }) {
     const response = await fetchProductById(params.id)
     const product = response.data
-    return { product }
+    return { product } // ✅ asyncData 리턴값이 뷰 data() 속성으로 설정된다!
   },
 
   // created() {
@@ -35,6 +35,8 @@ export default {
   // },
   methods: {
     addToCart() {
+      // Nuxt에서는 뷰 라우터, 뷰 스토어 모두 인스턴스에서 제공이 되도록 이미 설정되어 있다! (따로 main.js에서 선언할 필요 X)
+      this.$store.commit('addCartItem', this.product) // ✅
       this.$router.push('/cart')
     },
   },
