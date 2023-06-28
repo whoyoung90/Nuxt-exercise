@@ -4,6 +4,10 @@ export const state = () => ({
 
 export const mutations = {
   addCartItem(state, item) {
-    state.cartItems.push(item)
+    const newCartItem = {
+      ...item,
+      imageUrl: `${item.imageUrl}?random=${Math.random()}`,
+    }
+    state.cartItems.push(newCartItem)
   },
 }

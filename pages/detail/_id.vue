@@ -11,14 +11,14 @@
       <div class="side-panel">
         <p class="name">{{ product.name }}</p>
         <p class="price">{{ product.price }}</p>
-        <button type="button" @click="addToCart">Add to Cart</button>
+        <button type="button" @click="addToCart">카트에 담기</button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { fetchProductById } from '@/api'
+import { fetchProductById, createCartItem } from '@/api'
 export default {
   /**
    * 페이지에 진입하기 전에 서버쪽에 데이터를 요청해서 받아오기 때문에 "this 접근이 불가!"
@@ -34,8 +34,12 @@ export default {
   //   fetchProductById(this.$route.params.id)
   // },
   methods: {
-    addToCart() {
-      // Nuxt에서는 뷰 라우터, 뷰 스토어 모두 인스턴스에서 제공이 되도록 이미 설정되어 있다! (따로 main.js에서 선언할 필요 X)
+    async addToCart() {
+      // 서버에 데이터 추가
+      const response = await createCartItem(this.product)
+      console.log(response)
+
+      // Nuxt에서는 뷰 라우터, 뷰 스토어 모두 뷰 인스턴스에서 제공이 되도록 이미 설정되어 있다! (따로 main.js에서 선언할 필요 X)
       this.$store.commit('addCartItem', this.product) // ✅
       this.$router.push('/cart')
     },
