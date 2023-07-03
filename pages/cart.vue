@@ -27,7 +27,15 @@
 </template>
 
 <script>
-export default {}
+// store에서 상수화를 하면 import해서 쓸 수 있다!
+import { FETCH_CART_ITEMS } from '@/store'
+
+export default {
+  async asyncData({ store }) {
+    // async - await를 설정하지 않으면 "데이터를 받기도 전에 페이지에 진입"하겠죠? 데이터 빈 상테..
+    await store.dispatch(FETCH_CART_ITEMS)
+  },
+}
 </script>
 
 <style scoped>
