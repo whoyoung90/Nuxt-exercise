@@ -44,9 +44,11 @@ export const actions = {
   /**
    * @description nuxtServerInit
    * (asyncData보다 이른 시점)
-   * 웹서비스에 필요한 여러 종류의 데이터들을 미리 셋업해 두는 곳
-   * 페이지에 진입하기 전에, store가 생성되는 시점에 이미 API를 다 들고와서 스토어에 데이터를 미리 셋업!!
-   * 스토어에 데이터를 미리 설정해놓고 바로 컴포넌트에서 접근할 수 있게 된다
+   * 넉스트의 universal 모드에서 사용할 수 있는 액션 함수
+   * 데이터가 담겨진 상태로 store 생성
+   *
+   * new Vuex.Store()처럼 인스턴스를 생성할 때, 이미 NuxtServerInit이 호출이 된다
+   * 페이지에 진입하기 전에, store가 생성되는 시점에 이미 API를 다 들고와서 스토어에 데이터를 "미리 셋업"!
    */
   async nuxtServerInit(storeContext, nuxtContext) {
     await storeContext.dispatch(FETCH_CART_ITEMS) // 각각의 로직들을 action으로 분리하고 여기서는 호출만!
