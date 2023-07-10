@@ -26,7 +26,8 @@ $ yarn generate
 Universal (SSR / SSG)
 
 # Deployment target
-Server (Node.js hosting)
+> Server (Node.js hosting)
+  Static (Static/Jamstack hosting)
 
 # Nuxt version
 nuxt(^2.15.8)
@@ -43,7 +44,7 @@ https://github.com/typicode/json-server
 
 https://jsonplaceholder.typicode.com/
 
-# 로컬에서 사용헀던 백엔드 서버를 원격(public domain)에서 사용할 수 있다.
+# 로컬에서 사용헀던 백엔드 서버를 원격(public domain)에서 사용할 수 있다
 https://my-json-server.typicode.com/
 ```
 

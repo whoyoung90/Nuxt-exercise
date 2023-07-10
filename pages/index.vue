@@ -36,9 +36,8 @@
 </template>
 
 <script>
-import axios from 'axios'
 import SearchInput from '@/components/SearchInput.vue'
-import { fetchProductsByKeyword } from '@/api'
+import { fetchProducts, fetchProductsByKeyword } from '@/api'
 
 export default {
   name: 'IndexPage',
@@ -54,7 +53,7 @@ export default {
    * - 페이지 진입시 화면깜박임(CSR)이 사라진다
    */
   async asyncData() {
-    const response = await axios.get('http://localhost:3000/products')
+    const response = await fetchProducts()
     // this.products = response.data
     const products = response.data.map((item) => ({
       ...item,
